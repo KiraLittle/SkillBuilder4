@@ -12,8 +12,8 @@ public class Grok
     private static final int MAX_POWER_LEVEL = 100;
 
     // instance variables
-    private int powerLevel;
-    private boolean isAlive;
+    private int powerLevel = DEFAULT_POWER_LEVEL;
+    private boolean isAlive = true ;
 
     /*
      * Initializes a Grok object to the default power level of 50.
@@ -46,8 +46,12 @@ public class Grok
 
     public boolean isDead()
     {
-        // TODO: replace this line with your code here
+
+        return isAlive == false;
+
     }
+        // TODO: replace this line with your code here
+
 
     // mutator methods
 
@@ -55,9 +59,22 @@ public class Grok
      * Sets the power level of this Grok.
      * @param powerLevel the power value to set for this Grok.
      */
-    public void setPowerLevel(int powerLevel)
+    public  void setPowerLevel(int powerLevel)
     {
-        this.powerLevel = powerLevel;
+        if (getPowerLevel() == 0){
+            // Do nothing
+        }
+        else{
+            this.powerLevel = powerLevel;
+            if (powerLevel>MAX_POWER_LEVEL){
+                this.powerLevel = MAX_POWER_LEVEL;
+            }
+            if (powerLevel<= 0){
+                this.powerLevel = 0;
+                isAlive = false;
+            }
+        }
+
     }
 
     /*
